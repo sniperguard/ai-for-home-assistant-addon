@@ -1,6 +1,6 @@
 name: "AI for Home Assistant - Cloud Relay"
 description: "Remote access for AI for Home Assistant iOS app - control from anywhere"
-version: "1.1.0"
+version: "1.2.0"
 slug: "homedashboard_relay"
 url: "https://github.com/sniperguard/ai-for-home-assistant-addon"
 arch:
@@ -18,4 +18,3 @@ schema:
   user_id: str
 startup: services
 boot: auto
-image: "ghcr.io/sniperguard/homedashboard-relay-{arch}"

@@ -12,12 +12,47 @@ class RelayClient {
     }
 
     async start() {
+        // If no userId saved, try to validate pairing code
+        if (!this.userId && config.pairingCode) {
+            await this.validatePairingCode();
+        }
+
         if (!this.userId) {
-            throw new Error('No user ID configured. Set up relay from HomeDashboard app.');
+            throw new Error('No user ID configured. Get a pairing code from the AI for Home Assistant app.');
         }
 
         console.log('[Relay] User ID:', this.userId.substring(0, 8) + '...');
         this.connect();
+    }
+
+    async validatePairingCode() {
+        console.log('[Relay] Validating pairing code...');
+
+        const httpUrl = config.relayUrl.replace('wss://', 'https://').replace('ws://', 'http://');
+
+        try {
+            const response = await fetch(`${httpUrl}/pairing/validate`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ pairingCode: config.pairingCode })
+            });
+
+            if (!response.ok) {
+                const error = await response.json().catch(() => ({ error: 'Unknown error' }));
+                throw new Error(`Pairing failed: ${error.error}`);
+            }
+
+            const data = await response.json();
+            this.userId = data.userId;
+
+            // Save userId for future connections
+            config.saveUserId(this.userId);
+
+            console.log('[Relay] Pairing successful! User ID saved.');
+        } catch (error) {
+            console.error('[Relay] Pairing error:', error.message);
+            throw error;
+        }
     }
 
     connect() {

@@ -1,31 +1,33 @@
 #!/usr/bin/with-contenv bashio
-# HomeDashboard Relay Add-on Run Script
+# AI for Home Assistant - Cloud Relay Add-on
 
 set -e
 
-# Read configuration - user_id is passed directly from iOS app
-USER_ID=$(bashio::config 'user_id')
+# Read configuration
+PAIRING_CODE=$(bashio::config 'pairing_code')
 
-if [ -z "$USER_ID" ] && [ ! -f /data/user_id ]; then
-    bashio::log.error "User ID required. Set up relay from HomeDashboard app:"
-    bashio::log.error "  Settings > Remote Access > HomeDashboard Relay"
+# Check if we have a saved user_id or need to pair
+if [ ! -f /data/user_id ] && [ -z "$PAIRING_CODE" ]; then
+    bashio::log.error "Pairing code required. Get one from the AI for Home Assistant app:"
+    bashio::log.error "  Settings > Remote Access > Cloud Relay > Set Up"
     bashio::exit.nok
-fi
-
-# Save user_id to persistent storage if provided in config
-if [ -n "$USER_ID" ]; then
-    echo "$USER_ID" > /data/user_id
-    bashio::log.info "User ID configured"
 fi
 
 # Export environment
 export RELAY_URL="wss://relay.sniper-guard.com"
+export PAIRING_CODE="$PAIRING_CODE"
 export HA_URL="http://supervisor/core"
 export SUPERVISOR_TOKEN="$SUPERVISOR_TOKEN"
 export DATA_DIR="/data"
 
-bashio::log.info "Starting HomeDashboard Relay..."
+bashio::log.info "Starting AI for Home Assistant Cloud Relay..."
 bashio::log.info "Relay URL: $RELAY_URL"
+
+if [ -f /data/user_id ]; then
+    bashio::log.info "User ID: configured"
+elif [ -n "$PAIRING_CODE" ]; then
+    bashio::log.info "Pairing code: $PAIRING_CODE (will validate on connect)"
+fi
 
 # Start relay client
 cd /app

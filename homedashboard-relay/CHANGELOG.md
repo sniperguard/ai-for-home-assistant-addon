@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+
+- Switched to pairing code authentication (simpler setup!)
+- Get a 6-character code from the iOS app
+- Paste it in the add-on config - done!
+
 ## 1.2.0
 
 - Fixed installation - now builds locally instead of pulling missing image

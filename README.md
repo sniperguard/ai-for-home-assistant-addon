@@ -1,70 +1,57 @@
-# HomeDashboard Relay - Home Assistant Add-on
+# AI for Home Assistant - Cloud Relay
 
-[![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fsniperguard%2Fhomedashboard-ha-addon)
+[![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fsniperguard%2Fai-for-home-assistant-addon)
 
 **Control your Home Assistant from anywhere - no port forwarding, no Nabu Casa subscription required.**
 
-This add-on enables the [HomeDashboard iOS app](https://apps.apple.com/app/id6504422964) to connect to your local Home Assistant installation from outside your network.
-
-<p align="center">
-  <img src="https://sniper-guard.com/images/homedashboard-relay-diagram.png" alt="How it works" width="600">
-</p>
+This add-on enables the [AI for Home Assistant iOS app](https://apps.apple.com/app/id6504422964) to connect to your local Home Assistant from outside your network.
 
 ## Features
 
 - **No port forwarding** - Works behind any firewall or CGNAT
 - **No subscription required** - Free alternative to Nabu Casa for remote access
 - **Secure** - All traffic encrypted with TLS
-- **Simple setup** - Just enter a pairing code
+- **One-tap setup** - Installs automatically from the iOS app
 - **Auto-reconnect** - Maintains connection automatically
 
 ## How It Works
 
 ```
-iPhone App ←──WSS──→ Relay Server ←──WSS──→ This Add-on → Home Assistant
-                    (encrypted)              (encrypted)      (local)
+iOS App ←──WSS──→ Relay Server ←──WSS──→ This Add-on → Home Assistant
+               (encrypted)              (encrypted)      (local)
 ```
 
 Your commands are relayed through our secure server. The relay only forwards encrypted traffic - it never sees your Home Assistant data or credentials.
 
 ## Quick Start
 
-### 1. Install the Add-on
+### Option 1: One-Tap Setup (Recommended)
 
-Click the button above, or manually add this repository:
-```
-https://github.com/sniperguard/homedashboard-ha-addon
-```
-
-### 2. Get a Pairing Code
-
-In the HomeDashboard iOS app:
+In the AI for Home Assistant iOS app:
 1. Go to **Settings** → **Remote Access**
-2. Select **HomeDashboard Relay** → **Set Up**
-3. Copy the 6-character code
+2. Tap **Set Up Now**
+3. Done! The app installs and configures this add-on automatically.
 
-### 3. Configure & Start
+### Option 2: Manual Installation
 
-1. Paste the pairing code in the add-on configuration
-2. Click **Save**, then **Start**
-3. Return to the app and tap **Check Connection**
-
-That's it! You can now control your Home Assistant from anywhere.
+1. Click the badge above to add this repository
+2. Install "AI for Home Assistant - Cloud Relay"
+3. The iOS app will configure it automatically when you set up remote access
 
 ## Requirements
 
 - Home Assistant OS or Supervised installation
-- [HomeDashboard iOS app](https://apps.apple.com/app/id6504422964)
+- [AI for Home Assistant iOS app](https://apps.apple.com/app/id6504422964)
 - Internet connection
 
 ## Support
 
-- [GitHub Issues](https://github.com/sniperguard/homedashboard-ha-addon/issues)
-- [HomeDashboard Support](https://sniper-guard.com/contact)
+- [GitHub Issues](https://github.com/sniperguard/ai-for-home-assistant-addon/issues)
+- [Contact Support](https://sniper-guard.com/contact)
 
-## About HomeDashboard
+## About AI for Home Assistant
 
-HomeDashboard is a powerful iOS app for controlling your Home Assistant smart home:
+AI for Home Assistant is a powerful iOS app for controlling your smart home:
 
 - Beautiful, customizable dashboard
 - Apple Watch app with complications

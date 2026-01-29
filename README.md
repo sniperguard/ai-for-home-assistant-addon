@@ -29,7 +29,7 @@ Your commands are relayed through our secure server. The relay only forwards enc
 
 In the AI for Home Assistant iOS app:
 1. Go to **Settings** → **Remote Access**
-2. Tap **Set Up Now**
+2. Tap **Cloud Relay** → **Set Up Now**
 3. Done! The app installs and configures this add-on automatically.
 
 ### Option 2: Manual Installation

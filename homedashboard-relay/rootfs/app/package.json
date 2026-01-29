@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "dependencies": {
+    "node-fetch": "^2.7.0",
     "ws": "^8.16.0"
   }
 }

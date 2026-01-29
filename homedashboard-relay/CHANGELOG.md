@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1
+
+- Fixed missing node-fetch dependency
+
 ## 1.3.0
 
 - Switched to pairing code authentication (simpler setup!)
